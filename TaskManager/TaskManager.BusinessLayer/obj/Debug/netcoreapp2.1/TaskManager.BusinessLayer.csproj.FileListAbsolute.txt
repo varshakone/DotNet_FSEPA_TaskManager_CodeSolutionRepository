@@ -1,0 +1,42 @@
+F:\varsha_Kone\IIHT\CaseStudy\TaskManager\TaskManager\TaskManager.BusinessLayer\bin\Debug\netcoreapp2.1\TaskManager.BusinessLayer.deps.json
+F:\varsha_Kone\IIHT\CaseStudy\TaskManager\TaskManager\TaskManager.BusinessLayer\bin\Debug\netcoreapp2.1\TaskManager.BusinessLayer.dll
+F:\varsha_Kone\IIHT\CaseStudy\TaskManager\TaskManager\TaskManager.BusinessLayer\bin\Debug\netcoreapp2.1\TaskManager.BusinessLayer.pdb
+F:\varsha_Kone\IIHT\CaseStudy\TaskManager\TaskManager\TaskManager.BusinessLayer\bin\Debug\netcoreapp2.1\TaskManager.Entities.dll
+F:\varsha_Kone\IIHT\CaseStudy\TaskManager\TaskManager\TaskManager.BusinessLayer\bin\Debug\netcoreapp2.1\TaskManager.Entities.pdb
+F:\varsha_Kone\IIHT\CaseStudy\TaskManager\TaskManager\TaskManager.BusinessLayer\obj\Debug\netcoreapp2.1\TaskManager.BusinessLayer.csprojAssemblyReference.cache
+F:\varsha_Kone\IIHT\CaseStudy\TaskManager\TaskManager\TaskManager.BusinessLayer\obj\Debug\netcoreapp2.1\TaskManager.BusinessLayer.csproj.CoreCompileInputs.cache
+F:\varsha_Kone\IIHT\CaseStudy\TaskManager\TaskManager\TaskManager.BusinessLayer\obj\Debug\netcoreapp2.1\TaskManager.BusinessLayer.AssemblyInfoInputs.cache
+F:\varsha_Kone\IIHT\CaseStudy\TaskManager\TaskManager\TaskManager.BusinessLayer\obj\Debug\netcoreapp2.1\TaskManager.BusinessLayer.AssemblyInfo.cs
+F:\varsha_Kone\IIHT\CaseStudy\TaskManager\TaskManager\TaskManager.BusinessLayer\obj\Debug\netcoreapp2.1\TaskManager.BusinessLayer.csproj.CopyComplete
+F:\varsha_Kone\IIHT\CaseStudy\TaskManager\TaskManager\TaskManager.BusinessLayer\obj\Debug\netcoreapp2.1\TaskManager.BusinessLayer.dll
+F:\varsha_Kone\IIHT\CaseStudy\TaskManager\TaskManager\TaskManager.BusinessLayer\obj\Debug\netcoreapp2.1\TaskManager.BusinessLayer.pdb
+F:\varsha_Kone\IIHT\CaseStudy\TaskManager\TaskManager\TaskManager.BusinessLayer\bin\Debug\netcoreapp2.1\TaskManager.DataLayer.dll
+F:\varsha_Kone\IIHT\CaseStudy\TaskManager\TaskManager\TaskManager.BusinessLayer\bin\Debug\netcoreapp2.1\TaskManager.DataLayer.pdb
+F:\varsha_Kone\IIHT\CaseStudy\FSE PA\CodeSolution\TaskManager\TaskManager\TaskManager.BusinessLayer\bin\Debug\netcoreapp2.1\TaskManager.BusinessLayer.deps.json
+F:\varsha_Kone\IIHT\CaseStudy\FSE PA\CodeSolution\TaskManager\TaskManager\TaskManager.BusinessLayer\bin\Debug\netcoreapp2.1\TaskManager.BusinessLayer.dll
+F:\varsha_Kone\IIHT\CaseStudy\FSE PA\CodeSolution\TaskManager\TaskManager\TaskManager.BusinessLayer\bin\Debug\netcoreapp2.1\TaskManager.BusinessLayer.pdb
+F:\varsha_Kone\IIHT\CaseStudy\FSE PA\CodeSolution\TaskManager\TaskManager\TaskManager.BusinessLayer\bin\Debug\netcoreapp2.1\TaskManager.DataLayer.dll
+F:\varsha_Kone\IIHT\CaseStudy\FSE PA\CodeSolution\TaskManager\TaskManager\TaskManager.BusinessLayer\bin\Debug\netcoreapp2.1\TaskManager.Entities.dll
+F:\varsha_Kone\IIHT\CaseStudy\FSE PA\CodeSolution\TaskManager\TaskManager\TaskManager.BusinessLayer\bin\Debug\netcoreapp2.1\TaskManager.DataLayer.pdb
+F:\varsha_Kone\IIHT\CaseStudy\FSE PA\CodeSolution\TaskManager\TaskManager\TaskManager.BusinessLayer\bin\Debug\netcoreapp2.1\TaskManager.Entities.pdb
+F:\varsha_Kone\IIHT\CaseStudy\FSE PA\CodeSolution\TaskManager\TaskManager\TaskManager.BusinessLayer\obj\Debug\netcoreapp2.1\TaskManager.BusinessLayer.csprojAssemblyReference.cache
+F:\varsha_Kone\IIHT\CaseStudy\FSE PA\CodeSolution\TaskManager\TaskManager\TaskManager.BusinessLayer\obj\Debug\netcoreapp2.1\TaskManager.BusinessLayer.csproj.CoreCompileInputs.cache
+F:\varsha_Kone\IIHT\CaseStudy\FSE PA\CodeSolution\TaskManager\TaskManager\TaskManager.BusinessLayer\obj\Debug\netcoreapp2.1\TaskManager.BusinessLayer.AssemblyInfoInputs.cache
+F:\varsha_Kone\IIHT\CaseStudy\FSE PA\CodeSolution\TaskManager\TaskManager\TaskManager.BusinessLayer\obj\Debug\netcoreapp2.1\TaskManager.BusinessLayer.AssemblyInfo.cs
+F:\varsha_Kone\IIHT\CaseStudy\FSE PA\CodeSolution\TaskManager\TaskManager\TaskManager.BusinessLayer\obj\Debug\netcoreapp2.1\TaskManager.BusinessLayer.csproj.CopyComplete
+F:\varsha_Kone\IIHT\CaseStudy\FSE PA\CodeSolution\TaskManager\TaskManager\TaskManager.BusinessLayer\obj\Debug\netcoreapp2.1\TaskManager.BusinessLayer.dll
+F:\varsha_Kone\IIHT\CaseStudy\FSE PA\CodeSolution\TaskManager\TaskManager\TaskManager.BusinessLayer\obj\Debug\netcoreapp2.1\TaskManager.BusinessLayer.pdb
+F:\varsha_Kone\IIHT\CaseStudy\FSE PA\CodeSolution\Repository\TaskManager_SolutionRepo\TaskManager\TaskManager.BusinessLayer\bin\Debug\netcoreapp2.1\TaskManager.BusinessLayer.deps.json
+F:\varsha_Kone\IIHT\CaseStudy\FSE PA\CodeSolution\Repository\TaskManager_SolutionRepo\TaskManager\TaskManager.BusinessLayer\bin\Debug\netcoreapp2.1\TaskManager.BusinessLayer.dll
+F:\varsha_Kone\IIHT\CaseStudy\FSE PA\CodeSolution\Repository\TaskManager_SolutionRepo\TaskManager\TaskManager.BusinessLayer\bin\Debug\netcoreapp2.1\TaskManager.BusinessLayer.pdb
+F:\varsha_Kone\IIHT\CaseStudy\FSE PA\CodeSolution\Repository\TaskManager_SolutionRepo\TaskManager\TaskManager.BusinessLayer\bin\Debug\netcoreapp2.1\TaskManager.DataLayer.dll
+F:\varsha_Kone\IIHT\CaseStudy\FSE PA\CodeSolution\Repository\TaskManager_SolutionRepo\TaskManager\TaskManager.BusinessLayer\bin\Debug\netcoreapp2.1\TaskManager.Entities.dll
+F:\varsha_Kone\IIHT\CaseStudy\FSE PA\CodeSolution\Repository\TaskManager_SolutionRepo\TaskManager\TaskManager.BusinessLayer\bin\Debug\netcoreapp2.1\TaskManager.DataLayer.pdb
+F:\varsha_Kone\IIHT\CaseStudy\FSE PA\CodeSolution\Repository\TaskManager_SolutionRepo\TaskManager\TaskManager.BusinessLayer\bin\Debug\netcoreapp2.1\TaskManager.Entities.pdb
+F:\varsha_Kone\IIHT\CaseStudy\FSE PA\CodeSolution\Repository\TaskManager_SolutionRepo\TaskManager\TaskManager.BusinessLayer\obj\Debug\netcoreapp2.1\TaskManager.BusinessLayer.csprojAssemblyReference.cache
+F:\varsha_Kone\IIHT\CaseStudy\FSE PA\CodeSolution\Repository\TaskManager_SolutionRepo\TaskManager\TaskManager.BusinessLayer\obj\Debug\netcoreapp2.1\TaskManager.BusinessLayer.csproj.CoreCompileInputs.cache
+F:\varsha_Kone\IIHT\CaseStudy\FSE PA\CodeSolution\Repository\TaskManager_SolutionRepo\TaskManager\TaskManager.BusinessLayer\obj\Debug\netcoreapp2.1\TaskManager.BusinessLayer.AssemblyInfoInputs.cache
+F:\varsha_Kone\IIHT\CaseStudy\FSE PA\CodeSolution\Repository\TaskManager_SolutionRepo\TaskManager\TaskManager.BusinessLayer\obj\Debug\netcoreapp2.1\TaskManager.BusinessLayer.AssemblyInfo.cs
+F:\varsha_Kone\IIHT\CaseStudy\FSE PA\CodeSolution\Repository\TaskManager_SolutionRepo\TaskManager\TaskManager.BusinessLayer\obj\Debug\netcoreapp2.1\TaskManager.BusinessLayer.csproj.CopyComplete
+F:\varsha_Kone\IIHT\CaseStudy\FSE PA\CodeSolution\Repository\TaskManager_SolutionRepo\TaskManager\TaskManager.BusinessLayer\obj\Debug\netcoreapp2.1\TaskManager.BusinessLayer.dll
+F:\varsha_Kone\IIHT\CaseStudy\FSE PA\CodeSolution\Repository\TaskManager_SolutionRepo\TaskManager\TaskManager.BusinessLayer\obj\Debug\netcoreapp2.1\TaskManager.BusinessLayer.pdb
