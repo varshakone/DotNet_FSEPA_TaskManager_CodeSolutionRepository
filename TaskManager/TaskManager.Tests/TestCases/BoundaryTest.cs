@@ -7,7 +7,9 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using TaskManager.BusinessLayer.Interface;
 using TaskManager.BusinessLayer.Services;
+using TaskManager.BusinessLayer.Services.Repository;
 using TaskManager.DataLayer;
 using TaskManager.Entities;
 using TaskManager.Test.Utility;
@@ -19,16 +21,15 @@ namespace TaskManager.Test.TestCases
     [CollectionDefinition("parallel", DisableParallelization = false)]
     public  class BoundaryTest
     {
+        /// <summary>
+        /// Declarion of private references
+        /// </summary>
         IConfigurationRoot config;
-        private Mock<IMongoCollection<TaskItem>> _mockCollection;
-        private Mock<IMongoDBContext> _mockContext;
-        private Mock<IOptions<MongoSettings>> _mockOptions;
         private MongoDBContext context;
-        private Mock<IMongoCollection<TaskGroup>> _mockCollectionGroup;
-
         private TaskItem taskItem;
         private TaskGroup taskGroup;
-
+        private readonly ITaskRepository _taskRepository;
+        private readonly ITaskService _taskService;
         private String testResult;
 
        static FileUtility fileUtility;
@@ -59,34 +60,31 @@ namespace TaskManager.Test.TestCases
            };
 
             MongoDBUtility mongoDBUtility = new MongoDBUtility();
-            _mockContext = mongoDBUtility.MockContext;
-            _mockCollection = mongoDBUtility.MockCollection;
-            _mockOptions = mongoDBUtility.MockOptions;
             context = mongoDBUtility.MongoDBContext;
-          
+            _taskRepository = new TaskRepository(context);
+            _taskService = new TaskService(_taskRepository);
 
             config = new ConfigurationBuilder().AddJsonFile("appsettings.test.json").Build();
         }
-      
-       // validate task start date is provided or not
-       [Fact]
+
+         
+        /// <summary>
+        /// validate task start date is provided or not
+        /// </summary>
+        /// <returns></returns>
+        [Fact]
         public async Task BoundaryTestFor_TaskStartDateRequiredAsync()
         {
             try
             {
                 if(taskItem.TaskStartDate != null)
                 {
-                    _mockCollection.Setup(op => op.InsertOneAsync(taskItem, null,
-                    default(CancellationToken))).Returns(Task.CompletedTask);
-                    _mockContext.Setup(c => c.GetCollection<TaskItem>(typeof(TaskItem).Name)).Returns(_mockCollection.Object);
-                    var taskService = new TaskService(context);
-
-                    //Action
-                    var result = taskService.NewTask(taskItem);
-                 
+                     //Action
+                    var result =await _taskService.NewTask(taskItem);
+                    
                     if(result == "New Task Added")
                     {
-                    
+                       
                         testResult = "BoundaryTestFor_TaskStartDate_Required="+ "True";
 
                         // Write test case result in text file
@@ -117,7 +115,7 @@ namespace TaskManager.Test.TestCases
             }
             catch(Exception exception)
             {
-                var res = exception;
+                var error = exception;
                 testResult = "BoundaryTestFor_TaskStartDate_Required=" + "False";
                 // Write test case result in text file
                 fileUtility.WriteTestCaseResuItInText(testResult);
@@ -140,6 +138,11 @@ namespace TaskManager.Test.TestCases
             }
         }
 
+
+        /// <summary>
+        /// validate task name is empty or not
+        /// </summary>
+        /// <returns></returns>
         [Fact]
         public async Task BoundaryTestFor_TaskName_Required()
         {
@@ -147,17 +150,14 @@ namespace TaskManager.Test.TestCases
             {
                 if (taskItem.Name != null)
                 {
-                    _mockCollection.Setup(op => op.InsertOneAsync(taskItem, null,
-                    default(CancellationToken))).Returns(Task.CompletedTask);
-                    _mockContext.Setup(c => c.GetCollection<TaskItem>(typeof(TaskItem).Name)).Returns(_mockCollection.Object);
-                    var taskService = new TaskService(context);
+                    
 
                     //Action
-                    var result = taskService.NewTask(taskItem);
-                 
+                    var result =await _taskService.NewTask(taskItem);
+                   
                     if (result == "New Task Added")
                     {
-                     
+                        
                         testResult = "BoundaryTestFor_TaskName_Required=" + "True";
 
                         // Write test case result in text file
@@ -188,7 +188,7 @@ namespace TaskManager.Test.TestCases
             }
             catch (Exception exception)
             {
-                var res = exception;
+                var error = exception;
                 testResult = "BoundaryTestFor_TaskName_Required=" + "False";
                 // Write test case result in text file
                 fileUtility.WriteTestCaseResuItInText(testResult);
@@ -211,6 +211,10 @@ namespace TaskManager.Test.TestCases
             }
         }
 
+        /// <summary>
+        /// validate task end date is required
+        /// </summary>
+        /// <returns></returns>
         [Fact]
         public async Task BoundaryTestFor_TaskEndDate_Required()
         {
@@ -218,17 +222,17 @@ namespace TaskManager.Test.TestCases
             {
                 if (taskItem.TaskEndDate != null)
                 {
-                    _mockCollection.Setup(op => op.InsertOneAsync(taskItem, null,
-                    default(CancellationToken))).Returns(Task.CompletedTask);
-                    _mockContext.Setup(c => c.GetCollection<TaskItem>(typeof(TaskItem).Name)).Returns(_mockCollection.Object);
-                    var taskService = new TaskService(context);
+                    //_mockCollection.Setup(op => op.InsertOneAsync(taskItem, null,
+                    //default(CancellationToken))).Returns(Task.CompletedTask);
+                    //_mockContext.Setup(c => c.GetCollection<TaskItem>(typeof(TaskItem).Name)).Returns(_mockCollection.Object);
+                    //var taskService = new TaskService(context);
 
                     //Action
-                    var result = taskService.NewTask(taskItem);
-                 
+                    var result =await _taskService.NewTask(taskItem);
+                   
                     if (result == "New Task Added")
                     {
-                     
+                        
                         testResult = "BoundaryTestFor_TaskEndDate_Required=" + "True";
 
                         // Write test case result in text file
@@ -259,7 +263,7 @@ namespace TaskManager.Test.TestCases
             }
             catch (Exception exception)
             {
-                var res = exception;
+                var error = exception;
                 testResult = "BoundaryTestFor_TaskEndDate_Required=" + "False";
                 // Write test case result in text file
                 fileUtility.WriteTestCaseResuItInText(testResult);
@@ -282,6 +286,10 @@ namespace TaskManager.Test.TestCases
             }
         }
 
+        /// <summary>
+        /// validate task end date should not greater than start date
+        /// </summary>
+        /// <returns></returns>
         [Fact]
         public async Task BoundaryTestFor_TaskEndDateGreaterThanTaskStartDate()
         {
@@ -289,17 +297,14 @@ namespace TaskManager.Test.TestCases
             {
                 if (taskItem.TaskStartDate < taskItem.TaskEndDate)
                 {
-                    _mockCollection.Setup(op => op.InsertOneAsync(taskItem, null,
-                    default(CancellationToken))).Returns(Task.CompletedTask);
-                    _mockContext.Setup(c => c.GetCollection<TaskItem>(typeof(TaskItem).Name)).Returns(_mockCollection.Object);
-                    var taskService = new TaskService(context);
+                  
 
                     //Action
-                    var result = taskService.NewTask(taskItem);
-                 
+                    var result =await _taskService.NewTask(taskItem);
+                    
                     if (result == "New Task Added")
                     {
-                   
+                       
                         testResult = "BoundaryTestFor_TaskEndDateGreaterThanTaskStartDate=" + "True";
 
                         // Write test case result in text file
@@ -330,7 +335,7 @@ namespace TaskManager.Test.TestCases
             }
             catch (Exception exception)
             {
-                var res = exception;
+                var error = exception;
                 testResult = "BoundaryTestFor_TaskEndDateGreaterThanTaskStartDate=" + "False";
                 // Write test case result in text file
                 fileUtility.WriteTestCaseResuItInText(testResult);
@@ -353,6 +358,11 @@ namespace TaskManager.Test.TestCases
             }
         }
 
+
+        /// <summary>
+        /// validate task color required
+        /// </summary>
+        /// <returns></returns>
         [Fact]
         public async Task BoundaryTestFor_TaskColorCode_Require()
         {
@@ -360,17 +370,12 @@ namespace TaskManager.Test.TestCases
             {
                 if (taskItem.TaskColorCode !=null)
                 {
-                    _mockCollection.Setup(op => op.InsertOneAsync(taskItem, null,
-                    default(CancellationToken))).Returns(Task.CompletedTask);
-                    _mockContext.Setup(c => c.GetCollection<TaskItem>(typeof(TaskItem).Name)).Returns(_mockCollection.Object);
-                    var taskService = new TaskService(context);
-
                     //Action
-                    var result = taskService.NewTask(taskItem);
-                 
+                    var result =await _taskService.NewTask(taskItem);
+                    
                     if (result == "New Task Added")
                     {
-                      
+                       
                         testResult = "BoundaryTestFor_TaskColorCode_Require=" + "True";
 
                         // Write test case result in text file
@@ -401,7 +406,7 @@ namespace TaskManager.Test.TestCases
             }
             catch (Exception exception)
             {
-                var res = exception;
+                var error = exception;
                 testResult = "BoundaryTestFor_TaskColorCode_Require=" + "False";
                 // Write test case result in text file
                 fileUtility.WriteTestCaseResuItInText(testResult);
@@ -424,6 +429,10 @@ namespace TaskManager.Test.TestCases
             }
         }
 
+        /// <summary>
+        /// validate task group is required
+        /// </summary>
+        /// <returns></returns>
         [Fact]
         public async Task BoundaryTestFor_TaskGroup_Require()
         {
@@ -431,17 +440,12 @@ namespace TaskManager.Test.TestCases
             {
                 if (taskItem.TaskGroup!= null)
                 {
-                    _mockCollection.Setup(op => op.InsertOneAsync(taskItem, null,
-                    default(CancellationToken))).Returns(Task.CompletedTask);
-                    _mockContext.Setup(c => c.GetCollection<TaskItem>(typeof(TaskItem).Name)).Returns(_mockCollection.Object);
-                    var taskService = new TaskService(context);
-
-                    //Action
-                    var result = taskService.NewTask(taskItem);
                     
+                    //Action
+                    var result =await _taskService.NewTask(taskItem);
+                   
                     if (result == "New Task Added")
                     {
-                      
                         testResult = "BoundaryTestFor_TaskGroup_Require=" + "True";
 
                         // Write test case result in text file
@@ -472,7 +476,7 @@ namespace TaskManager.Test.TestCases
             }
             catch (Exception exception)
             {
-                var res = exception;
+                var error = exception;
                 testResult = "BoundaryTestFor_TaskGroup_Require=" + "False";
                 // Write test case result in text file
                 fileUtility.WriteTestCaseResuItInText(testResult);
@@ -495,6 +499,11 @@ namespace TaskManager.Test.TestCases
             }
         }
 
+
+        /// <summary>
+        /// Validate group name is required
+        /// </summary>
+        /// <returns></returns>
         [Fact]
         public async Task BoundaryTestFor_GroupName_Require()
         {
@@ -502,24 +511,24 @@ namespace TaskManager.Test.TestCases
             {
                 if (taskGroup.GroupName != null)
                 {
-                    MongoDBUtility mongoDBUtility = new MongoDBUtility(new TaskGroup());
-                    _mockContext = mongoDBUtility.MockContext;
-                    _mockCollectionGroup = mongoDBUtility.MockCollectionGroup;
-                    _mockOptions = mongoDBUtility.MockOptions;
-                    context = mongoDBUtility.MongoDBContext;
+                    //MongoDBUtility mongoDBUtility = new MongoDBUtility(new TaskGroup());
+                    //_mockContext = mongoDBUtility.MockContext;
+                    //_mockCollectionGroup = mongoDBUtility.MockCollectionGroup;
+                    //_mockOptions = mongoDBUtility.MockOptions;
+                    //context = mongoDBUtility.MongoDBContext;
 
 
-                    _mockCollectionGroup.Setup(op => op.InsertOneAsync(taskGroup, null,
-                    default(CancellationToken))).Returns(Task.CompletedTask);
-                    _mockContext.Setup(c => c.GetCollection<TaskGroup>(typeof(TaskGroup).Name)).Returns(_mockCollectionGroup.Object);
-                    var taskService = new TaskService(context);
+                    //_mockCollectionGroup.Setup(op => op.InsertOneAsync(taskGroup, null,
+                    //default(CancellationToken))).Returns(Task.CompletedTask);
+                    //_mockContext.Setup(c => c.GetCollection<TaskGroup>(typeof(TaskGroup).Name)).Returns(_mockCollectionGroup.Object);
+                    //var taskService = new TaskService(context);
 
                     //Action
-                    var result = taskService.NewTaskGroup(taskGroup);
+                    var result =await _taskService.NewTaskGroup(taskGroup);
                     
                     if (result == "New Group Added")
                     {
-                      
+                        
                         testResult = "BoundaryTestFor_GroupName_Require=" + "True";
 
                         // Write test case result in text file
@@ -550,7 +559,7 @@ namespace TaskManager.Test.TestCases
             }
             catch (Exception exception)
             {
-                var res = exception;
+                var error = exception;
                 testResult = "BoundaryTestFor_GroupName_Require=" + "False";
                 // Write test case result in text file
                 fileUtility.WriteTestCaseResuItInText(testResult);
@@ -573,6 +582,10 @@ namespace TaskManager.Test.TestCases
             }
         }
 
+        /// <summary>
+        /// validate isActive property is required
+        /// </summary>
+        /// <returns></returns>
         [Fact]
         public async Task BoundaryTestFor_GroupIsActive_Require()
         {
@@ -580,24 +593,24 @@ namespace TaskManager.Test.TestCases
             {
                 if (taskGroup.Active != null)
                 {
-                    MongoDBUtility mongoDBUtility = new MongoDBUtility(new TaskGroup());
-                    _mockContext = mongoDBUtility.MockContext;
-                    _mockCollectionGroup = mongoDBUtility.MockCollectionGroup;
-                    _mockOptions = mongoDBUtility.MockOptions;
-                    context = mongoDBUtility.MongoDBContext;
+                //    MongoDBUtility mongoDBUtility = new MongoDBUtility(new TaskGroup());
+                //    _mockContext = mongoDBUtility.MockContext;
+                //    _mockCollectionGroup = mongoDBUtility.MockCollectionGroup;
+                //    _mockOptions = mongoDBUtility.MockOptions;
+                //    context = mongoDBUtility.MongoDBContext;
 
 
-                    _mockCollectionGroup.Setup(op => op.InsertOneAsync(taskGroup, null,
-                    default(CancellationToken))).Returns(Task.CompletedTask);
-                    _mockContext.Setup(c => c.GetCollection<TaskGroup>(typeof(TaskGroup).Name)).Returns(_mockCollectionGroup.Object);
-                    var taskService = new TaskService(context);
+                //    _mockCollectionGroup.Setup(op => op.InsertOneAsync(taskGroup, null,
+                //    default(CancellationToken))).Returns(Task.CompletedTask);
+                //    _mockContext.Setup(c => c.GetCollection<TaskGroup>(typeof(TaskGroup).Name)).Returns(_mockCollectionGroup.Object);
+                //    var taskService = new TaskService(context);
 
                     //Action
-                    var result = taskService.NewTaskGroup(taskGroup);
-                   
+                    var result =await _taskService.NewTaskGroup(taskGroup);
+                    
                     if (result == "New Group Added")
                     {
-                      
+                       
                         testResult = "BoundaryTestFor_GroupIsActive_Require=" +"True";
 
                         // Write test case result in text file
@@ -628,7 +641,7 @@ namespace TaskManager.Test.TestCases
             }
             catch (Exception exception)
             {
-                var res = exception;
+                var error = exception;
                 testResult = "BoundaryTestFor_GroupIsActive_Require=" + "False";
                 // Write test case result in text file
                 fileUtility.WriteTestCaseResuItInText(testResult);
@@ -651,6 +664,10 @@ namespace TaskManager.Test.TestCases
             }
         }
 
+        /// <summary>
+        /// validate group color required
+        /// </summary>
+        /// <returns></returns>
         [Fact]
         public async Task BoundaryTestFor_GroupColor_Require()
         {
@@ -658,29 +675,16 @@ namespace TaskManager.Test.TestCases
             {
                 if (taskGroup.Active != null)
                 {
-                    MongoDBUtility mongoDBUtility = new MongoDBUtility(new TaskGroup());
-                    _mockContext = mongoDBUtility.MockContext;
-                    _mockCollectionGroup = mongoDBUtility.MockCollectionGroup;
-                    _mockOptions = mongoDBUtility.MockOptions;
-                    context = mongoDBUtility.MongoDBContext;
-
-
-                    _mockCollectionGroup.Setup(op => op.InsertOneAsync(taskGroup, null,
-                    default(CancellationToken))).Returns(Task.CompletedTask);
-                    _mockContext.Setup(c => c.GetCollection<TaskGroup>(typeof(TaskGroup).Name)).Returns(_mockCollectionGroup.Object);
-                    var taskService = new TaskService(context);
-
-                    //Action
-                    var result = taskService.NewTaskGroup(taskGroup);
                    
+                    //Action
+                    var result =await _taskService.NewTaskGroup(taskGroup);
+                    
                     if (result == "New Group Added")
                     {
-                        
+                      
                         testResult = "BoundaryTestFor_GroupColor_Require=" + "True";
-
                         // Write test case result in text file
                         fileUtility.WriteTestCaseResuItInText(testResult);
-
                         // Write test case result in xml file
                         if (config["env"] == "development")
                         {
@@ -706,7 +710,7 @@ namespace TaskManager.Test.TestCases
             }
             catch (Exception exception)
             {
-                var res = exception;
+                var error = exception;
                 testResult = "BoundaryTestFor_GroupColor_Require=" + "False";
                 // Write test case result in text file
                 fileUtility.WriteTestCaseResuItInText(testResult);

@@ -7,7 +7,9 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using TaskManager.BusinessLayer.Interface;
 using TaskManager.BusinessLayer.Services;
+using TaskManager.BusinessLayer.Services.Repository;
 using TaskManager.DataLayer;
 using TaskManager.Entities;
 using TaskManager.Test.Utility;
@@ -22,17 +24,14 @@ namespace TaskManager.Test.TestCases
 
         // private refernce declaration
         IConfigurationRoot config;
-        private Mock<IMongoCollection<TaskItem>> _mockCollection;
-        private Mock<IMongoDBContext> _mockContext;
-        private Mock<IOptions<MongoSettings>> _mockOptions;
+        private readonly ITaskRepository _taskRepository;
+        private readonly ITaskService _taskService;
         private MongoDBContext context;
-        private Mock<IMongoCollection<TaskGroup>> _mockCollectionGroup;
+        
 
         private TaskItem taskItem;
         private TaskGroup taskGroup;
-
         private String testResult;
-
         static FileUtility fileUtility;
 
 
@@ -66,33 +65,35 @@ namespace TaskManager.Test.TestCases
             };
 
             MongoDBUtility mongoDBUtility = new MongoDBUtility();
-            _mockContext = mongoDBUtility.MockContext;
-            _mockCollection = mongoDBUtility.MockCollection;
-            _mockOptions = mongoDBUtility.MockOptions;
             context = mongoDBUtility.MongoDBContext;
+            _taskRepository = new TaskRepository(context);
+            _taskService = new TaskService(_taskRepository);
+
             config = new ConfigurationBuilder().AddJsonFile("appsettings.test.json").Build();
 
         }
 
 
-        //test method to check new task added into database or not
+        
+        /// <summary>
+        /// test method to check new task added into database or not
+        /// </summary>
+        /// <returns></returns>
         [Fact]
         public async Task BusinessTestFor_NewTask_Successed()
         {
             try
             {
-                    _mockCollection.Setup(op => op.InsertOneAsync(taskItem, null,
-                    default(CancellationToken))).Returns(Task.CompletedTask);
-                    _mockContext.Setup(c => c.GetCollection<TaskItem>(typeof(TaskItem).Name)).Returns(_mockCollection.Object);
-                    var taskService = new TaskService(context);
+                    //_mockCollection.Setup(op => op.InsertOneAsync(taskItem, null,
+                    //default(CancellationToken))).Returns(Task.CompletedTask);
+                    //_mockContext.Setup(c => c.GetCollection<TaskItem>(typeof(TaskItem).Name)).Returns(_mockCollection.Object);
+                    //var taskService = new TaskService(context);
 
                     //Action
-                    var result = taskService.NewTask(taskItem);
-                    
+                    var result =await _taskService.NewTask(taskItem);
                     if (result == "New Task Added")
                     {
-                       
-                        testResult = "BusinessTestFor_NewTask_Successed=" + "True";
+                      testResult = "BusinessTestFor_NewTask_Successed=" + "True";
 
                         // Write test case result in text file
                         fileUtility.WriteTestCaseResuItInText(testResult);
@@ -145,7 +146,11 @@ namespace TaskManager.Test.TestCases
 
         }
 
-        // check whether NewTaskGroup() method in TaskService able to add new group in db
+
+        /// <summary>
+        /// check whether NewTaskGroup() method in TaskService able to add new group in db
+        /// </summary>
+        /// <returns></returns>
         [Fact]
         public async Task BusinessTestFor_NewTaskGroup_Successed()
         {
@@ -154,20 +159,20 @@ namespace TaskManager.Test.TestCases
             {
                 if (taskGroup.GroupName != null)
                 {
-                    MongoDBUtility mongoDBUtility = new MongoDBUtility(new TaskGroup());
-                    _mockContext = mongoDBUtility.MockContext;
-                    _mockCollectionGroup = mongoDBUtility.MockCollectionGroup;
-                    _mockOptions = mongoDBUtility.MockOptions;
-                    context = mongoDBUtility.MongoDBContext;
+                    //MongoDBUtility mongoDBUtility = new MongoDBUtility(new TaskGroup());
+                    //_mockContext = mongoDBUtility.MockContext;
+                    //_mockCollectionGroup = mongoDBUtility.MockCollectionGroup;
+                    //_mockOptions = mongoDBUtility.MockOptions;
+                    //context = mongoDBUtility.MongoDBContext;
 
 
-                    _mockCollectionGroup.Setup(op => op.InsertOneAsync(taskGroup, null,
-                    default(CancellationToken))).Returns(Task.CompletedTask);
-                    _mockContext.Setup(c => c.GetCollection<TaskGroup>(typeof(TaskGroup).Name)).Returns(_mockCollectionGroup.Object);
-                    var taskService = new TaskService(context);
+                    //_mockCollectionGroup.Setup(op => op.InsertOneAsync(taskGroup, null,
+                    //default(CancellationToken))).Returns(Task.CompletedTask);
+                    //_mockContext.Setup(c => c.GetCollection<TaskGroup>(typeof(TaskGroup).Name)).Returns(_mockCollectionGroup.Object);
+                    //var taskService = new TaskService(context);
 
                     //Action
-                     result = taskService.NewTaskGroup(taskGroup);
+                     result =await _taskService.NewTaskGroup(taskGroup);
                     
                     if (result == "New Group Added")
                     {
@@ -225,26 +230,27 @@ namespace TaskManager.Test.TestCases
             }
 
         }
-        // check whether EditTask() method in TaskService update task present in database
+
+        /// <summary>
+        /// check whether EditTask() method in TaskService update task present in database
+        /// </summary>
+        /// <returns></returns>
         [Fact]
         public async Task BusinessTestFor_EditTask_Successed()
         {
             try
             {
-                _mockCollection.Setup(op => op.InsertOneAsync(taskItem, null,
-                default(CancellationToken))).Returns(Task.CompletedTask);
-                _mockContext.Setup(c => c.GetCollection<TaskItem>(typeof(TaskItem).Name)).Returns(_mockCollection.Object);
-                var taskService = new TaskService(context);
+                
                 taskItem.Priority = TaskPriority.Medium;
                 taskItem.TaskStatus = TaskStatus.Progress;
                 taskItem.TaskEndDate = taskItem.TaskStartDate.AddDays(10);
                 taskItem.TaskColorCode = "Orange";
                 //Action
-                var result = taskService.EditTask(taskItem);
+                var result =await _taskService.EditTask(taskItem);
                 
                 if (result == 1)
                 {
-                   
+                    
                     testResult = "BusinessTestFor_EditTask_Successed=" + "True";
 
                     // Write test case result in text file
@@ -299,24 +305,24 @@ namespace TaskManager.Test.TestCases
 
         }
 
-        // check whether GetAllTask() method in TaskService returns list of all task present 
+
+        /// <summary>
+        /// check whether GetAllTask() method in TaskService returns list of all task present 
+        /// </summary>
+        /// <returns></returns>
         [Fact]
         public async Task BusinessTestFor_GetAllTask_Successed()
         {
             List<TaskItem> result =null;
             try
             {
-                _mockCollection.Setup(op => op.InsertOneAsync(taskItem, null,
-                default(CancellationToken))).Returns(Task.CompletedTask);
-                _mockContext.Setup(c => c.GetCollection<TaskItem>(typeof(TaskItem).Name)).Returns(_mockCollection.Object);
-                var taskService = new TaskService(context);
+               
              
                 //Action
-                 result = taskService.GetAllTask();
-                
+                 result =await _taskService.GetAllTask();
+               
                 if (result.Count !=0)
-                {
-                   
+                {                    
                     testResult = "BusinessTestFor_GetAllTask_Successed=" + "True";
 
                     // Write test case result in text file
@@ -370,25 +376,26 @@ namespace TaskManager.Test.TestCases
 
         }
 
-        // check whether GetDashboard() method in TaskService returns dashboard with minimum total groups
-        //total task , pending task and completed task
+
+
+        /// <summary>
+        ///   check whether GetDashboard() method in TaskService returns dashboard with minimum total groups
+        ///   total task , pending task and completed task
+        /// </summary>
+        /// <returns></returns>
         [Fact]
         public async Task BusinessTestFor_GetTaskDashboard_Successed()
         {
             TaskDashboard result = null;
             try
             {
-                _mockCollection.Setup(op => op.InsertOneAsync(taskItem, null,
-                default(CancellationToken))).Returns(Task.CompletedTask);
-                _mockContext.Setup(c => c.GetCollection<TaskItem>(typeof(TaskItem).Name)).Returns(_mockCollection.Object);
-                var taskService = new TaskService(context);
-
+             
                 //Action
-                result = taskService.GetDashboard();
+                result =await _taskService.GetDashboard();
                 
                 if (result.TotalGroups != 0 || result.TotalTask!= 0 || result.PendingTask!= 0 || result.CompletedTask != 0)
                 {
-                   
+                    
                     testResult = "BusinessTestFor_GetTaskDashboard_Successed=" +"True";
 
                     // Write test case result in text file
@@ -442,24 +449,24 @@ namespace TaskManager.Test.TestCases
 
         }
 
-        // test method verifies that returns all groups present in db
+       
+        /// <summary>
+        /// test method verifies that returns all groups present in db
+        /// </summary>
+        /// <returns></returns>
         [Fact]
         public async Task BusinessTestFor_GetAllTaskGroups_Successed()
         {
             List<TaskGroup> result = null;
             try
             {
-                _mockCollection.Setup(op => op.InsertOneAsync(taskItem, null,
-                default(CancellationToken))).Returns(Task.CompletedTask);
-                _mockContext.Setup(c => c.GetCollection<TaskItem>(typeof(TaskItem).Name)).Returns(_mockCollection.Object);
-                var taskService = new TaskService(context);
-
+               
                 //Action
-                result = taskService.GetAllTaskGroup();
-                
+                result =await _taskService.GetAllTaskGroup();
+               
                 if (result != null)
                 {
-                   
+                    
                     testResult = "BusinessTestFor_GetAllTaskGroups_Successed=" + "True";
 
                     // Write test case result in text file

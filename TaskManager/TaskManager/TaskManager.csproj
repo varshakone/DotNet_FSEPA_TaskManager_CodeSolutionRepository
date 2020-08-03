@@ -1,7 +1,7 @@
-﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp2.1</TargetFramework>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
@@ -10,22 +10,20 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.App" />
-    <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.1.2" PrivateAssets="All" />
-    <PackageReference Include="Microsoft.Extensions.Options" Version="2.1.1" />
-    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.1.9" />
-    <PackageReference Include="MongoDB.Driver" Version="2.10.4" />
+    <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.Extensions.Options" Version="2.2.0" />
+    <PackageReference Include="MongoDB.Driver" Version="2.10.0" />
   </ItemGroup>
 
   <ItemGroup>
-    
     <Reference Include="TaskManager.BusinessLayer">
-      <HintPath>..\TaskManager.BusinessLayer\bin\Debug\netcoreapp2.1\TaskManager.BusinessLayer.dll</HintPath>
+      <HintPath>..\TaskManager.BusinessLayer\bin\Debug\netcoreapp2.2\TaskManager.BusinessLayer.dll</HintPath>
     </Reference>
     <Reference Include="TaskManager.DataLayer">
-      <HintPath>..\TaskManager.DataLayer\bin\Debug\netcoreapp2.1\TaskManager.DataLayer.dll</HintPath>
+      <HintPath>..\TaskManager.DataLayer\bin\Debug\netcoreapp2.2\TaskManager.DataLayer.dll</HintPath>
     </Reference>
     <Reference Include="TaskManager.Entities">
-      <HintPath>..\TaskManager.Entities\bin\Debug\netcoreapp2.1\TaskManager.Entities.dll</HintPath>
+      <HintPath>..\TaskManager.Entities\bin\Debug\netcoreapp2.2\TaskManager.Entities.dll</HintPath>
     </Reference>
   </ItemGroup>
 

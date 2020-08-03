@@ -1,0 +1,5 @@
+F:\f\varsha_Kone\IIHT\CaseStudy\Revised\FSEPA\CodeSolution\TaskManager\TaskManager.DataLayer\bin\Debug\netcoreapp3.1\TaskManager.DataLayer.deps.json
+F:\f\varsha_Kone\IIHT\CaseStudy\Revised\FSEPA\CodeSolution\TaskManager\TaskManager.DataLayer\bin\Debug\netcoreapp3.1\TaskManager.DataLayer.dll
+F:\f\varsha_Kone\IIHT\CaseStudy\Revised\FSEPA\CodeSolution\TaskManager\TaskManager.DataLayer\obj\Debug\netcoreapp3.1\TaskManager.DataLayer.csprojAssemblyReference.cache
+F:\f\varsha_Kone\IIHT\CaseStudy\Revised\FSEPA\CodeSolution\TaskManager\TaskManager.DataLayer\obj\Debug\netcoreapp3.1\TaskManager.DataLayer.AssemblyInfoInputs.cache
+F:\f\varsha_Kone\IIHT\CaseStudy\Revised\FSEPA\CodeSolution\TaskManager\TaskManager.DataLayer\obj\Debug\netcoreapp3.1\TaskManager.DataLayer.AssemblyInfo.cs

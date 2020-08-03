@@ -43,8 +43,8 @@ namespace TaskManager.Test.TestCases
             {
                 var settings = new MongoSettings()
                 {
-                    Connection = "mongodb://localhost:27017",
-                    DatabaseName = "TaskManagerDB"
+                    Connection = "mongodb://user:password@127.0.0.1:27017/guestbook",
+                    DatabaseName = "guestbook"
                 };
                 _mockOptions.Setup(s => s.Value).Returns(settings);
                 _mockClient.Setup(c => c
@@ -68,7 +68,6 @@ namespace TaskManager.Test.TestCases
             }
             catch(Exception ex)
             {
-                var error = ex;
                 string testResult = "MongoBookDBContext_Constructor_Success=" + "False";
 
                 // Write test case result in text file
@@ -108,7 +107,6 @@ namespace TaskManager.Test.TestCases
             }
             catch(Exception ex)
             {
-                var error = ex;
                 string testResult = "MongoBookDBContext_GetCollection_ValidName_Success=" + "False";
 
                 // Write test case result in text file

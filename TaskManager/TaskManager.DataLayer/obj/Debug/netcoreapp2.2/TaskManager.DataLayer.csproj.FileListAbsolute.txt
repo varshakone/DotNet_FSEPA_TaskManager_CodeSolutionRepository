@@ -1,0 +1,12 @@
+F:\f\varsha_Kone\IIHT\CaseStudy\Revised\FSEPA\CodeSolution\TaskManager\TaskManager.DataLayer\obj\Debug\netcoreapp2.2\TaskManager.DataLayer.csprojAssemblyReference.cache
+F:\f\varsha_Kone\IIHT\CaseStudy\Revised\FSEPA\CodeSolution\TaskManager\TaskManager.DataLayer\obj\Debug\netcoreapp2.2\TaskManager.DataLayer.AssemblyInfoInputs.cache
+F:\f\varsha_Kone\IIHT\CaseStudy\Revised\FSEPA\CodeSolution\TaskManager\TaskManager.DataLayer\obj\Debug\netcoreapp2.2\TaskManager.DataLayer.AssemblyInfo.cs
+F:\f\varsha_Kone\IIHT\CaseStudy\Revised\FSEPA\CodeSolution\TaskManager\TaskManager.DataLayer\obj\Debug\netcoreapp2.2\TaskManager.DataLayer.csproj.CoreCompileInputs.cache
+F:\f\varsha_Kone\IIHT\CaseStudy\Revised\FSEPA\CodeSolution\TaskManager\TaskManager.DataLayer\bin\Debug\netcoreapp2.2\TaskManager.DataLayer.deps.json
+F:\f\varsha_Kone\IIHT\CaseStudy\Revised\FSEPA\CodeSolution\TaskManager\TaskManager.DataLayer\bin\Debug\netcoreapp2.2\TaskManager.DataLayer.dll
+F:\f\varsha_Kone\IIHT\CaseStudy\Revised\FSEPA\CodeSolution\TaskManager\TaskManager.DataLayer\bin\Debug\netcoreapp2.2\TaskManager.DataLayer.pdb
+F:\f\varsha_Kone\IIHT\CaseStudy\Revised\FSEPA\CodeSolution\TaskManager\TaskManager.DataLayer\bin\Debug\netcoreapp2.2\TaskManager.Entities.dll
+F:\f\varsha_Kone\IIHT\CaseStudy\Revised\FSEPA\CodeSolution\TaskManager\TaskManager.DataLayer\bin\Debug\netcoreapp2.2\TaskManager.Entities.pdb
+F:\f\varsha_Kone\IIHT\CaseStudy\Revised\FSEPA\CodeSolution\TaskManager\TaskManager.DataLayer\obj\Debug\netcoreapp2.2\TaskManager.DataLayer.csproj.CopyComplete
+F:\f\varsha_Kone\IIHT\CaseStudy\Revised\FSEPA\CodeSolution\TaskManager\TaskManager.DataLayer\obj\Debug\netcoreapp2.2\TaskManager.DataLayer.dll
+F:\f\varsha_Kone\IIHT\CaseStudy\Revised\FSEPA\CodeSolution\TaskManager\TaskManager.DataLayer\obj\Debug\netcoreapp2.2\TaskManager.DataLayer.pdb

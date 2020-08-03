@@ -1,0 +1,14 @@
+F:\f\varsha_Kone\IIHT\CaseStudy\Revised\FSEPA\CodeSolution\TaskManager\TaskManager.BusinessLayer\bin\Debug\netcoreapp3.1\TaskManager.BusinessLayer.deps.json
+F:\f\varsha_Kone\IIHT\CaseStudy\Revised\FSEPA\CodeSolution\TaskManager\TaskManager.BusinessLayer\bin\Debug\netcoreapp3.1\TaskManager.BusinessLayer.dll
+F:\f\varsha_Kone\IIHT\CaseStudy\Revised\FSEPA\CodeSolution\TaskManager\TaskManager.BusinessLayer\bin\Debug\netcoreapp3.1\TaskManager.DataLayer.dll
+F:\f\varsha_Kone\IIHT\CaseStudy\Revised\FSEPA\CodeSolution\TaskManager\TaskManager.BusinessLayer\bin\Debug\netcoreapp3.1\TaskManager.Entities.dll
+F:\f\varsha_Kone\IIHT\CaseStudy\Revised\FSEPA\CodeSolution\TaskManager\TaskManager.BusinessLayer\bin\Debug\netcoreapp3.1\TaskManager.DataLayer.pdb
+F:\f\varsha_Kone\IIHT\CaseStudy\Revised\FSEPA\CodeSolution\TaskManager\TaskManager.BusinessLayer\bin\Debug\netcoreapp3.1\TaskManager.Entities.pdb
+F:\f\varsha_Kone\IIHT\CaseStudy\Revised\FSEPA\CodeSolution\TaskManager\TaskManager.BusinessLayer\obj\Debug\netcoreapp3.1\TaskManager.BusinessLayer.csprojAssemblyReference.cache
+F:\f\varsha_Kone\IIHT\CaseStudy\Revised\FSEPA\CodeSolution\TaskManager\TaskManager.BusinessLayer\obj\Debug\netcoreapp3.1\TaskManager.BusinessLayer.AssemblyInfoInputs.cache
+F:\f\varsha_Kone\IIHT\CaseStudy\Revised\FSEPA\CodeSolution\TaskManager\TaskManager.BusinessLayer\obj\Debug\netcoreapp3.1\TaskManager.BusinessLayer.AssemblyInfo.cs
+F:\f\varsha_Kone\IIHT\CaseStudy\Revised\FSEPA\CodeSolution\TaskManager\TaskManager.BusinessLayer\obj\Debug\netcoreapp3.1\TaskManager.BusinessLayer.csproj.CopyComplete
+F:\f\varsha_Kone\IIHT\CaseStudy\Revised\FSEPA\CodeSolution\TaskManager\TaskManager.BusinessLayer\bin\Debug\netcoreapp3.1\TaskManager.BusinessLayer.pdb
+F:\f\varsha_Kone\IIHT\CaseStudy\Revised\FSEPA\CodeSolution\TaskManager\TaskManager.BusinessLayer\obj\Debug\netcoreapp3.1\TaskManager.BusinessLayer.csproj.CoreCompileInputs.cache
+F:\f\varsha_Kone\IIHT\CaseStudy\Revised\FSEPA\CodeSolution\TaskManager\TaskManager.BusinessLayer\obj\Debug\netcoreapp3.1\TaskManager.BusinessLayer.dll
+F:\f\varsha_Kone\IIHT\CaseStudy\Revised\FSEPA\CodeSolution\TaskManager\TaskManager.BusinessLayer\obj\Debug\netcoreapp3.1\TaskManager.BusinessLayer.pdb

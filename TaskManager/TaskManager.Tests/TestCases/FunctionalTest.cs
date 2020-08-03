@@ -8,7 +8,7 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using TaskManager.Entities;
-using TaskManager.Service;
+using TaskManager;
 using TaskManager.Test.Utility;
 using Xunit;
 using TaskStatus = TaskManager.Entities.TaskStatus;
@@ -59,7 +59,12 @@ namespace TaskManager.Test.TestCases
             _client = _server.CreateClient();
         }
 
-        //test method to check new task added into database or not
+
+
+        /// <summary>
+        /// test method to check new task added into database or not
+        /// </summary>
+        /// <returns></returns>
         [Fact]
         public async Task FunctionalTestFor_NewTask_Api()
         {
@@ -68,7 +73,7 @@ namespace TaskManager.Test.TestCases
                 HttpContent content = new StringContent(JsonConvert.SerializeObject(taskItem), Encoding.UTF8, "application/json");
 
                 String billResponse = string.Empty;
-                HttpResponseMessage response = await _client.PostAsync("	http://localhost:9090/api/Task/NewTask", content);
+                HttpResponseMessage response = await _client.PostAsync("https://localhost:9090/api/Task/NewTask", content);
                 var status = response.EnsureSuccessStatusCode();
 
                 String taskResult = String.Empty;
@@ -110,7 +115,7 @@ namespace TaskManager.Test.TestCases
             }
             catch (Exception exception)
             {
-                var res = exception;
+                var error = exception;
                 testResult = "FunctionalTestFor_NewTask_Api=" + "False";
                 // Write test case result in text file
                 fileUtility.WriteTestCaseResuItInText(testResult);
@@ -134,7 +139,12 @@ namespace TaskManager.Test.TestCases
             }
 
         }
-        // check whether NewTaskGroup() method in TaskService able to add new group in db
+
+        /// <summary>
+        /// check whether NewTaskGroup() method in TaskService able to add new group in db
+        /// </summary>
+        /// <returns></returns>
+        
         [Fact]
         public async Task FunctionalTestFor_NewTaskGroup_Api()
         {
@@ -143,7 +153,7 @@ namespace TaskManager.Test.TestCases
                 HttpContent content = new StringContent(JsonConvert.SerializeObject(taskGroup), Encoding.UTF8, "application/json");
 
                 String billResponse = string.Empty;
-                HttpResponseMessage response = await _client.PostAsync("	http://localhost:9090/api/Task/newgroup", content);
+                HttpResponseMessage response = await _client.PostAsync("https://localhost:9090/api/Task/newgroup", content);
                 var status = response.EnsureSuccessStatusCode();
 
                 String groupResult = String.Empty;
@@ -185,7 +195,7 @@ namespace TaskManager.Test.TestCases
             }
             catch (Exception exception)
             {
-                var res = exception;
+                var error = exception;
                 testResult = "FunctionalTestFor_NewTaskGroup_Api=" + "False";
                 // Write test case result in text file
                 fileUtility.WriteTestCaseResuItInText(testResult);
@@ -210,7 +220,12 @@ namespace TaskManager.Test.TestCases
 
         }
 
-        // check whether EditTask() method in TaskService update task present in database
+        
+
+        /// <summary>
+        /// check whether EditTask() method in TaskService update task present in database
+        /// </summary>
+        /// <returns></returns>          
         [Fact]
         public async Task FunctionalTestFor_EditTask_Api()
         {
@@ -223,7 +238,7 @@ namespace TaskManager.Test.TestCases
                 HttpContent content = new StringContent(JsonConvert.SerializeObject(taskItem), Encoding.UTF8, "application/json");
 
                 String taskResponse = string.Empty;
-                HttpResponseMessage response = await _client.PostAsync("	http://localhost:9090/api/Task/edittask", content);
+                HttpResponseMessage response = await _client.PostAsync("https://localhost:9090/api/Task/edittask", content);
                 var status = response.EnsureSuccessStatusCode();
 
                 long editResult = 0;
@@ -265,7 +280,7 @@ namespace TaskManager.Test.TestCases
             }
             catch (Exception exception)
             {
-                var res = exception;
+                var error = exception;
                 testResult = "FunctionalTestFor_EditTask_Api=" +"False".ToString();
                 // Write test case result in text file
                 fileUtility.WriteTestCaseResuItInText(testResult);
@@ -290,7 +305,11 @@ namespace TaskManager.Test.TestCases
 
         }
 
-        // check whether GetAllTask() method in TaskService returns list of all task present 
+
+        /// <summary>
+        /// check whether GetAllTask() method in TaskService returns list of all task present 
+        /// </summary>
+        /// <returns></returns>
         [Fact]
         public async Task FunctionalTestFor_GetAllTask_Api()
         {
@@ -298,7 +317,7 @@ namespace TaskManager.Test.TestCases
             {
                 
                 List<TaskItem> taskList = null;
-                HttpResponseMessage response = await _client.PostAsync("	http://localhost:9090/api/Task/alltask", null);
+                HttpResponseMessage response = await _client.PostAsync("https://localhost:9090/api/Task/alltask", null);
                 var status = response.EnsureSuccessStatusCode();
                 String taskResponse;
                 long editResult = 0;
@@ -340,7 +359,7 @@ namespace TaskManager.Test.TestCases
             }
             catch (Exception exception)
             {
-                var res = exception;
+                var error = exception;
                 testResult = "FunctionalTestFor_GetAllTask_Api=" + "False".ToString();
                 // Write test case result in text file
                 fileUtility.WriteTestCaseResuItInText(testResult);
@@ -366,7 +385,11 @@ namespace TaskManager.Test.TestCases
 
         }
 
-        // test method verifies that returns all groups present in db
+         
+        /// <summary>
+        /// test method verifies that returns all groups present in db
+        /// </summary>
+        /// <returns></returns>
         [Fact]
         public async Task FunctionalTestFor_GetAllTaskGroups_Api()
         {
@@ -374,7 +397,7 @@ namespace TaskManager.Test.TestCases
             {
 
                 List<TaskGroup> groupList = null;
-                HttpResponseMessage response = await _client.PostAsync("	http://localhost:9090/api/Task/allgroups", null);
+                HttpResponseMessage response = await _client.PostAsync("https://localhost:9090/api/Task/allgroups", null);
                 var status = response.EnsureSuccessStatusCode();
                 String taskResponse;
             
@@ -416,7 +439,7 @@ namespace TaskManager.Test.TestCases
             }
             catch (Exception exception)
             {
-                var res = exception;
+                var error = exception;
                 testResult = "FunctionalTestFor_GetAllTaskGroups_Api=" + "False".ToString();
                 // Write test case result in text file
                 fileUtility.WriteTestCaseResuItInText(testResult);
@@ -442,9 +465,13 @@ namespace TaskManager.Test.TestCases
 
         }
 
-        // check whether GetDashboard() method in TaskService returns dashboard with minimum total groups
-        //total task , pending task and completed task
 
+
+        /// <summary>
+        /// check whether GetDashboard() method in TaskService returns dashboard with minimum total groups
+        ///total task , pending task and completed task
+        /// </summary>
+        /// <returns></returns>
         [Fact]
         public async Task FunctionalTestFor_GetTaskDashboard_Api()
         {
@@ -452,7 +479,7 @@ namespace TaskManager.Test.TestCases
             {
 
                 TaskDashboard dashboard = null;
-                HttpResponseMessage response = await _client.PostAsync("	http://localhost:9090/api/Task/dashboard", null);
+                HttpResponseMessage response = await _client.PostAsync("https://localhost:9090/api/Task/dashboard", null);
                 var status = response.EnsureSuccessStatusCode();
                 String taskResponse;
                 
@@ -493,7 +520,7 @@ namespace TaskManager.Test.TestCases
             }
             catch (Exception exception)
             {
-                var res = exception;
+                var error = exception;
                 testResult = "FunctionalTestFor_GetTaskDashboard_Api=" + "False".ToString();
                 // Write test case result in text file
                 fileUtility.WriteTestCaseResuItInText(testResult);

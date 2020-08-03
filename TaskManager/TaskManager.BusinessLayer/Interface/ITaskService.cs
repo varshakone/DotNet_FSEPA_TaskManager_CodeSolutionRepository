@@ -8,16 +8,16 @@ namespace TaskManager.BusinessLayer.Interface
 {
 public interface ITaskService
     {
-        List<TaskGroup> GetAllTaskGroup();
+        Task<List<TaskGroup>> GetAllTaskGroup();
 
-        String NewTaskGroup( TaskGroup taskGroup);
+        Task<String> NewTaskGroup( TaskGroup taskGroup);
 
-        List<TaskItem> GetAllTask();
+        Task<List<TaskItem>> GetAllTask();
 
-        String NewTask(TaskItem newtask);
+        Task<String> NewTask(TaskItem newtask);
 
-        long EditTask( TaskItem task);
+        Task<long> EditTask( TaskItem task);
 
-        TaskDashboard GetDashboard();
+        Task<TaskDashboard> GetDashboard();
     }
 }

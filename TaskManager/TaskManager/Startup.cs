@@ -12,9 +12,10 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using TaskManager.BusinessLayer.Interface;
 using TaskManager.BusinessLayer.Services;
+using TaskManager.BusinessLayer.Services.Repository;
 using TaskManager.DataLayer;
 
-namespace TaskManager.Service
+namespace TaskManager
 {
     public class Startup
     {
@@ -31,19 +32,20 @@ namespace TaskManager.Service
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
             services.Configure<MongoSettings>(options => {
 
-            options.DatabaseName = Configuration.GetSection("MongoConnection:DatabaseName").Value;
+                options.DatabaseName = Configuration.GetSection("MongoConnection:DatabaseName").Value;
                 options.Connection = Configuration.GetSection("MongoConnection:Connection").Value;
 
                 if (options.Connection == null && options.DatabaseName == null)
                 {
                     options.Connection =
-                    "mongodb://Localhost:27017";
-                    options.DatabaseName = "TaskManagerDB";
+                    "mongodb://user:password@127.0.0.1:27017/guestbook";
+                    options.DatabaseName = "guestbook";
                 }
             }
             );
             services.AddScoped<ITaskService, TaskService>();
             services.AddScoped<IMongoDBContext, MongoDBContext>();
+            services.AddScoped<ITaskRepository, TaskRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

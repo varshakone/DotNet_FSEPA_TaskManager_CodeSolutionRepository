@@ -26,7 +26,7 @@ namespace TaskManager.Test.Utility
             serialize = new XmlSerializer(typeof(List<cases>));
             this.Testcases = new List<cases>();
         }
-        public async Task WriteTestCaseResuItInXML(cases Cases)
+        public  async Task<string> WriteTestCaseResuItInXML(cases Cases)
         {
             try { 
             
@@ -58,7 +58,7 @@ namespace TaskManager.Test.Utility
                 stream.Close();
 
             }
-             //  return "test case registered";
+                return "test case registered";
             }
             catch(Exception ex)
             {

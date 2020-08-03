@@ -18,28 +18,14 @@ namespace TaskManager.Service.Controllers
         {
             _taskService = taskService;
         }
-        [Route("api/Task/test")]
-        [HttpGet]
-        public ActionResult<String> testlink()
-        {
-            try
-            {
-             
-                return "Hi";
-            }
-            catch (Exception exception)
-            {
-                return BadRequest(exception.ToString());
-            }
-
-        }
+        
         [Route("api/Task/newtask")]
         [HttpPost]
         public async Task<ActionResult<String>> NewTask(TaskItem newtask)
         {
             try
             {
-                var result =_taskService.NewTask(newtask);
+                var result =await _taskService.NewTask(newtask);
                 return result;
             }
             catch(Exception exception)
@@ -51,11 +37,11 @@ namespace TaskManager.Service.Controllers
 
         [Route("api/Task/newgroup")]
         [HttpPost]
-        public ActionResult<String> NewTaskGroup(TaskGroup newgroup)
+        public async Task<ActionResult<String>> NewTaskGroup(TaskGroup newgroup)
         {
             try
             {
-                var resultGroup = _taskService.NewTaskGroup(newgroup);
+                var resultGroup =await _taskService.NewTaskGroup(newgroup);
                 return resultGroup;
               
             }
@@ -72,7 +58,7 @@ namespace TaskManager.Service.Controllers
         {
             try
             {
-                var resultEdit = _taskService.EditTask(task);
+                var resultEdit =await _taskService.EditTask(task);
                 return resultEdit;
             }
             catch (Exception exception)
@@ -84,11 +70,11 @@ namespace TaskManager.Service.Controllers
 
         [Route("api/Task/alltask")]
         [HttpPost]
-        public  ActionResult<List<TaskItem>> GetAllTask()
+        public async Task< ActionResult<List<TaskItem>>> GetAllTask()
         {
             try
             {
-                var resultLstTask = _taskService.GetAllTask();
+                var resultLstTask =await _taskService.GetAllTask();
                 return resultLstTask ;
             }
             catch (Exception exception)
@@ -105,7 +91,7 @@ namespace TaskManager.Service.Controllers
             try
             {
 
-                var resultDashboard = _taskService.GetDashboard();
+                var resultDashboard =await _taskService.GetDashboard();
                 return resultDashboard;
             }
             catch (Exception exception)
@@ -120,7 +106,7 @@ namespace TaskManager.Service.Controllers
         {
             try
             {
-                var resultGroups = _taskService.GetAllTaskGroup();
+                var resultGroups =await _taskService.GetAllTaskGroup();
                 return resultGroups;
             }
             catch (Exception exception)

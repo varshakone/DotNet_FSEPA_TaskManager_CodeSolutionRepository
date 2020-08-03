@@ -1,0 +1,9 @@
+F:\f\varsha_Kone\IIHT\CaseStudy\Revised\FSEPA\CodeSolution\TaskManager\TaskManager.Entities\bin\Debug\netcoreapp3.1\TaskManager.Entities.deps.json
+F:\f\varsha_Kone\IIHT\CaseStudy\Revised\FSEPA\CodeSolution\TaskManager\TaskManager.Entities\bin\Debug\netcoreapp3.1\TaskManager.Entities.dll
+F:\f\varsha_Kone\IIHT\CaseStudy\Revised\FSEPA\CodeSolution\TaskManager\TaskManager.Entities\obj\Debug\netcoreapp3.1\TaskManager.Entities.csprojAssemblyReference.cache
+F:\f\varsha_Kone\IIHT\CaseStudy\Revised\FSEPA\CodeSolution\TaskManager\TaskManager.Entities\obj\Debug\netcoreapp3.1\TaskManager.Entities.AssemblyInfoInputs.cache
+F:\f\varsha_Kone\IIHT\CaseStudy\Revised\FSEPA\CodeSolution\TaskManager\TaskManager.Entities\obj\Debug\netcoreapp3.1\TaskManager.Entities.AssemblyInfo.cs
+F:\f\varsha_Kone\IIHT\CaseStudy\Revised\FSEPA\CodeSolution\TaskManager\TaskManager.Entities\bin\Debug\netcoreapp3.1\TaskManager.Entities.pdb
+F:\f\varsha_Kone\IIHT\CaseStudy\Revised\FSEPA\CodeSolution\TaskManager\TaskManager.Entities\obj\Debug\netcoreapp3.1\TaskManager.Entities.csproj.CoreCompileInputs.cache
+F:\f\varsha_Kone\IIHT\CaseStudy\Revised\FSEPA\CodeSolution\TaskManager\TaskManager.Entities\obj\Debug\netcoreapp3.1\TaskManager.Entities.dll
+F:\f\varsha_Kone\IIHT\CaseStudy\Revised\FSEPA\CodeSolution\TaskManager\TaskManager.Entities\obj\Debug\netcoreapp3.1\TaskManager.Entities.pdb
