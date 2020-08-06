@@ -9,7 +9,7 @@ using TaskManager.Entities;
 
 namespace TaskManager.Service.Controllers
 {
-    
+    [Route("api/Task")]
     [ApiController]
     public class TaskController : ControllerBase
     {
@@ -19,7 +19,7 @@ namespace TaskManager.Service.Controllers
             _taskService = taskService;
         }
         
-        [Route("api/Task/newtask")]
+        [Route("newtask")]
         [HttpPost]
         public async Task<ActionResult<String>> NewTask(TaskItem newtask)
         {
@@ -35,7 +35,7 @@ namespace TaskManager.Service.Controllers
 
         }
 
-        [Route("api/Task/newgroup")]
+        [Route("newgroup")]
         [HttpPost]
         public async Task<ActionResult<String>> NewTaskGroup(TaskGroup newgroup)
         {
@@ -52,7 +52,7 @@ namespace TaskManager.Service.Controllers
 
         }
 
-        [Route("api/Task/edittask")]
+        [Route("edittask")]
         [HttpPost]
         public async Task<ActionResult<long>> EditTask(TaskItem task)
         {
@@ -68,7 +68,7 @@ namespace TaskManager.Service.Controllers
 
         }
 
-        [Route("api/Task/alltask")]
+        [Route("alltask")]
         [HttpPost]
         public async Task< ActionResult<List<TaskItem>>> GetAllTask()
         {
@@ -84,7 +84,7 @@ namespace TaskManager.Service.Controllers
 
         }
 
-        [Route("api/Task/dashboard")]
+        [Route("dashboard")]
         [HttpPost]
         public async Task<ActionResult<TaskDashboard>> GetTaskDashboard()
         {
@@ -100,7 +100,7 @@ namespace TaskManager.Service.Controllers
             }
 
         }
-        [Route("api/Task/allgroups")]
+        [Route("allgroups")]
         [HttpPost]
         public async Task<ActionResult<IEnumerable<TaskGroup>>> GetAllTaskGroups()
         {
