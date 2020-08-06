@@ -53,7 +53,7 @@ namespace TaskManager.Service.Controllers
         }
 
         [Route("edittask")]
-        [HttpPost]
+        [HttpPut]
         public async Task<ActionResult<long>> EditTask(TaskItem task)
         {
             try
@@ -69,7 +69,7 @@ namespace TaskManager.Service.Controllers
         }
 
         [Route("alltask")]
-        [HttpPost]
+        [HttpGet]
         public async Task< ActionResult<List<TaskItem>>> GetAllTask()
         {
             try
@@ -85,7 +85,7 @@ namespace TaskManager.Service.Controllers
         }
 
         [Route("dashboard")]
-        [HttpPost]
+        [HttpGet]
         public async Task<ActionResult<TaskDashboard>> GetTaskDashboard()
         {
             try
@@ -101,7 +101,7 @@ namespace TaskManager.Service.Controllers
 
         }
         [Route("allgroups")]
-        [HttpPost]
+        [HttpGet]
         public async Task<ActionResult<IEnumerable<TaskGroup>>> GetAllTaskGroups()
         {
             try
