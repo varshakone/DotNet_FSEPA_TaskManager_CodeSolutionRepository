@@ -73,7 +73,7 @@ namespace TaskManager.Test.TestCases
                 HttpContent content = new StringContent(JsonConvert.SerializeObject(taskItem), Encoding.UTF8, "application/json");
 
                 String billResponse = string.Empty;
-                HttpResponseMessage response = await _client.PostAsync("https://localhost:9090/api/Task/NewTask", content);
+                HttpResponseMessage response = await _client.PostAsync("http://localhost:9090/api/Task/NewTask", content);
                 var status = response.EnsureSuccessStatusCode();
 
                 String taskResult = String.Empty;
@@ -153,7 +153,7 @@ namespace TaskManager.Test.TestCases
                 HttpContent content = new StringContent(JsonConvert.SerializeObject(taskGroup), Encoding.UTF8, "application/json");
 
                 String billResponse = string.Empty;
-                HttpResponseMessage response = await _client.PostAsync("https://localhost:9090/api/Task/newgroup", content);
+                HttpResponseMessage response = await _client.PostAsync("http://localhost:9090/api/Task/newgroup", content);
                 var status = response.EnsureSuccessStatusCode();
 
                 String groupResult = String.Empty;
@@ -238,7 +238,7 @@ namespace TaskManager.Test.TestCases
                 HttpContent content = new StringContent(JsonConvert.SerializeObject(taskItem), Encoding.UTF8, "application/json");
 
                 String taskResponse = string.Empty;
-                HttpResponseMessage response = await _client.PostAsync("https://localhost:9090/api/Task/edittask", content);
+                HttpResponseMessage response = await _client.PutAsync("http://localhost:9090/api/Task/edittask", content);
                 var status = response.EnsureSuccessStatusCode();
 
                 long editResult = 0;
@@ -317,7 +317,7 @@ namespace TaskManager.Test.TestCases
             {
                 
                 List<TaskItem> taskList = null;
-                HttpResponseMessage response = await _client.PostAsync("https://localhost:9090/api/Task/alltask", null);
+                HttpResponseMessage response = await _client.GetAsync("http://localhost:9090/api/Task/alltask");
                 var status = response.EnsureSuccessStatusCode();
                 String taskResponse;
                 long editResult = 0;
@@ -397,7 +397,7 @@ namespace TaskManager.Test.TestCases
             {
 
                 List<TaskGroup> groupList = null;
-                HttpResponseMessage response = await _client.PostAsync("https://localhost:9090/api/Task/allgroups", null);
+                HttpResponseMessage response = await _client.GetAsync("http://localhost:9090/api/Task/allgroups");
                 var status = response.EnsureSuccessStatusCode();
                 String taskResponse;
             
@@ -479,7 +479,7 @@ namespace TaskManager.Test.TestCases
             {
 
                 TaskDashboard dashboard = null;
-                HttpResponseMessage response = await _client.PostAsync("https://localhost:9090/api/Task/dashboard", null);
+                HttpResponseMessage response = await _client.GetAsync("http://localhost:9090/api/Task/dashboard");
                 var status = response.EnsureSuccessStatusCode();
                 String taskResponse;
                 
